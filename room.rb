@@ -1,13 +1,38 @@
 class Room
 
+attr_accessor :capacity, :playlist_genre, :occupants, :current_song
 
 
-  array_of_music_genres = ["test genre name" ]
+
+def initialize(size, genre)
+  # array_of_music_genres = ["test genre name", ]
+
+@capacity = size 
+@playlist_genre = genre
+@occupants = []
+@current_song = "silence"
+end
+
+def occupancy
+
+  return @occupants.size
+
+end
+
+def check_in(guest)
+@occupants.push(guest)
+
+end
 
 
-def initialize
-@capacity = (rand.(5, 10, 15))
-@playlist_genre = rand.("test_genre_name")
+
+def check_out(guest)
+@occupants.select! { |occupant| occupant != guest }
+
+end
+
+def new_song(song_title)
+@current_song = song_title 
 end
 
 end
